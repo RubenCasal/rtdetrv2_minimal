@@ -1,0 +1,25 @@
+python3 run_object_detection.py \
+    --model_name_or_path PekingU/rtdetr_v2_r50vd \
+    --dataset_name cppe-5 \
+    --do_train true \
+    --do_eval true \
+    --output_dir rtdetr-finetuned-cppe-5 \
+    --num_train_epochs 40 \
+    --image_square_size 640 \
+    --fp16 true \
+    --learning_rate 5e-5 \
+    --weight_decay 1e-4 \
+    --dataloader_num_workers 2 \
+    --per_device_train_batch_size 4 \
+    --gradient_accumulation_steps 2 \
+    --remove_unused_columns false \
+    --ignore_mismatched_sizes true \
+    --metric_for_best_model eval_map \
+    --greater_is_better true \
+    --load_best_model_at_end true \
+    --logging_strategy steps \
+    --logging_steps 50 \
+    --eval_strategy epoch \
+    --save_strategy epoch \
+    --save_total_limit 2 \
+    --seed 1337
